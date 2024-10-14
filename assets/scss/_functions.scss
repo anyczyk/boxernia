@@ -1,0 +1,55 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass functions.
+// -----------------------------------------------------------------------------
+
+/// Making sure that unit is added to provided value. If unit not provided then the `px` will be added
+/// @param {String | Number} $value - Value to be checked
+/// @example scss
+///   font-size: ensure-unit(16);
+///   // font-size: 16px;
+///   height: ensure-unit(100px);
+///   // height: 100px;
+@function ensure-unit($value) {
+  @if type-of($value) == 'number' and unit($value) == '' {
+    @return $value * 1px;
+  } @else {
+    @return $value;
+  }
+}
+
+
+/// Native `url(..)` function wrapper
+/// @param {String} $base - base URL for the asset
+/// @param {String} $type - asset type folder (e.g. `fonts/`)
+/// @param {String} $path - asset path
+/// @return {Url}
+@function asset($base, $type, $path) {
+  @return url($base + $type + $path);
+}
+
+/// Returns URL to an image based on its path
+/// @param {String} $path - image path
+/// @param {String} $base [$base-url] - base URL
+/// @return {Url}
+/// @require $base-url
+@function image($path, $base: $base-url) {
+  @return asset($base, 'images/', $path);
+}
+
+/// Returns URL to a font based on its path
+/// @param {String} $path - font path
+/// @param {String} $base [$base-url] - base URL
+/// @return {Url}
+/// @require $base-url
+@function font($path, $base: $base-url) {
+  @return asset($base, 'fonts/', $path);
+}
+
+// Function to convert px to rem
+$html-font-size: 16px;
+
+@function rem($size, $font-size : $html-font-size) {
+  $font-size: $font-size + 0px;
+  $remSize: calc($size / $font-size);
+  @return #{$remSize}rem;
+}

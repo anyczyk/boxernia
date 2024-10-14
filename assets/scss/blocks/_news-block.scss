@@ -1,0 +1,25 @@
+.bsk-news {
+  background-color: rgba($color-sand, 0.2);
+
+  &__list {
+    @include media-breakpoint-down(sm) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__count-posts {
+    border-top: 1px solid rgba($color-darker-brown, 0.1);
+  }
+
+  .bsk-tile__btn-load-more[disabled] {
+    background-color: rgba($color-darker-brown, 0.1);
+    color: $color-white;
+
+    &:hover {
+      background-color: rgba($color-darker-brown, 0.1);
+      color: $color-white;
+      border-color: transparent;
+    }
+  }
+}

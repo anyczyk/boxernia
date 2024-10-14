@@ -1,0 +1,8 @@
+.bsk-404 {
+  @include flex(flex, center, center);
+  min-height: 600px;
+
+  @include media-breakpoint-down(sm) {
+    min-height: 400px;
+  }
+}

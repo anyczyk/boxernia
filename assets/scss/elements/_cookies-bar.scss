@@ -1,0 +1,22 @@
+.admin-bar {
+  .bsk-cookies-banner {
+    margin-bottom: 32px;
+
+    @media screen and (max-width: 782px) {
+      margin-bottom: 46px;
+    }
+  }
+}
+.bsk-cookies-banner {
+  @include flex(none, center, center);
+  @include position(fixed, auto, null, 0, 0);
+
+  width: 100%;
+  background-color: rgba($color-light-sand, 0.96);
+  z-index: 8;
+  box-shadow: 0 0 5px rgba($color-darker-brown, 0.2);
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}

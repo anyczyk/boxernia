@@ -1,0 +1,32 @@
+.bsk-footer {
+  background-color: $color-brown;
+  color: $color-white;
+
+  ul {
+    @extend .list-unstyled;
+  }
+
+  li {
+    margin-bottom: 0.2rem;
+  }
+
+  li, p {
+    font-size: 1rem;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  &__copyright {
+    p {
+      border-top: 1px solid rgba($color-white, 0.1);
+      font-size: 0.8rem;
+      opacity: 0.6;
+    }
+  }
+}
+
+//#wpadminbar {
+//  display: none !important;
+//}

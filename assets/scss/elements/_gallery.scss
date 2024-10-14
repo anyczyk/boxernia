@@ -1,0 +1,195 @@
+figure.wp-block-gallery {
+  $gap-gallery: 2rem;
+  margin-bottom: 2rem;
+  &[class*=wp-block-gallery-] {
+    gap: $gap-gallery;
+
+    &.has-nested-images.columns {
+      &-1 {
+        .wp-block-image:not(#individual-image) {
+          @include media-breakpoint-up(sm) {
+            width: 100%;
+          }
+        }
+      }
+      &-2 {
+        .wp-block-image:not(#individual-image) {
+          @include media-breakpoint-up(sm) {
+            width: calc(50% - #{$gap-gallery}*0.5);
+          }
+        }
+      }
+      &-3 {
+        .wp-block-image:not(#individual-image) {
+          @include media-breakpoint-up(sm) {
+            width: calc(33.33333% - #{$gap-gallery}*0.66667);
+          }
+        }
+      }
+      &-4 {
+        .wp-block-image:not(#individual-image) {
+          @include media-breakpoint-up(sm) {
+            width: calc(25% - #{$gap-gallery}*0.75);
+          }
+        }
+      }
+      &-5 {
+        .wp-block-image:not(#individual-image) {
+          @include media-breakpoint-up(sm) {
+            width: calc(20% - #{$gap-gallery}*0.8);
+          }
+        }
+      }
+      &-6 {
+        .wp-block-image:not(#individual-image) {
+          @include media-breakpoint-up(sm) {
+            width: calc(16.66667% - #{$gap-gallery}*0.83333);
+          }
+        }
+      }
+    }
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &.has-nested-images figure.wp-block-image {
+    .wp-element-caption {
+      transition: transform $time-transition;
+      background: linear-gradient(0deg, $color-dark-brown 0%, transparent 100%);
+    }
+  }
+
+  .wp-block-image {
+    a {
+      img {
+        transition: filter $time-transition, transform $time-transition;
+      }
+
+      &:hover {
+        img {
+          @extend .filter-sepia;
+
+          @include media-breakpoint-up(sm) {
+            transform: translateY(-10px);
+          }
+        }
+        + .wp-element-caption {
+          @include media-breakpoint-up(sm) {
+            transform: translateY(-10px);
+          }
+        }
+      }
+    }
+  }
+
+  &.is-style-wp-block-gallery--sepia {
+    .wp-block-image a {
+      img {
+        @extend .filter-sepia;
+      }
+      &:hover img {
+        filter: sepia(0);
+      }
+    }
+  }
+}
+
+.bsk-modal-gallery {
+  --bs-modal-width: calc(1200px + 2rem);
+  --bs-modal-margin: 1rem;
+
+  @include media-breakpoint-up(sm) {
+    .modal-dialog {
+      padding: 1rem;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    --bs-modal-margin: 0.5rem;
+  }
+
+  .modal-content {
+    border: none;
+    border-radius: 0;
+    background-color: $color-dark-brown;
+  }
+
+  .modal-body {
+    padding: 0.5rem;
+    box-shadow: 0 0 5px rgba($color-black, 0.5)
+  }
+
+  &__tab {
+    @include position(absolute, 0, null, null, 0);
+    opacity: 0;
+    z-index: -1;
+  }
+
+  &__close {
+    @include position(absolute, 0, 0);
+    @include box(40px);
+    @include flex(flex, center, center);
+
+    margin: 0.5rem 0.5rem;
+    background-color: rgba($color-brown, 0.8);
+    color: $color-white;
+    border-radius: 0;
+    z-index: 10;
+    font-size: 20px;
+    border: 1px solid transparent;
+    transition: background-color $time-transition, color $time-transition;
+    
+    &::before {
+      content: '\e800';
+      font-family: fontello, serif;
+    }
+
+    &:hover {
+      border: 1px solid $color-brown;
+      background-color: $color-sand;
+      color: $color-brown;
+    }
+  }
+
+  &__image {
+    @include margin(auto);
+
+    display: block;
+  }
+
+  &__caption {
+    @include position(absolute, null, 0, 0, 0);
+
+    padding: 2rem 1rem 1rem;
+    color: $color-white;
+    background: linear-gradient(0deg, $color-dark-brown 0%, transparent 100%);
+    font-size: 1.5rem;
+
+    @include media-breakpoint-down(sm) {
+      font-size: 1rem;
+    }
+  }
+
+  &__swiper-prev,
+  &__swiper-next {
+    transform: translateY(-50%);
+    @include media-breakpoint-down(sm) {
+      opacity: 0.5;
+    }
+  }
+
+  &__swiper-prev {
+    left: 1rem;
+    @include media-breakpoint-down(xl) {
+      transform: scale(0.6) translateY(-50%) translateX(-1.5rem);
+    }
+  }
+  &__swiper-next {
+    right: 1rem;
+    @include media-breakpoint-down(xl) {
+      transform: scale(0.6) translateY(-50%) translateX(1.5rem);
+    }
+  }
+}

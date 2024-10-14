@@ -1,0 +1,35 @@
+/// Generate most used CSS parameters for fonts. It's a nice facade for our SCSS code to make it more readable
+/// @param {String | Number} $font-size [null]
+/// @param {String} $font-weight [null]
+/// @param {String} $line-height [null]
+/// @param {String | Number} $letter-spacing [0]
+/// @example scss - SCSS
+///   .sample {
+///     @include font-params(24, 700, 1.5, 0.4px);
+///   }
+/// @example css - CSS
+///   .sample {
+///     font-size: 24px;
+///     font-weight: 700;
+///     line-height: 1.5;
+///     letter-spacing: 0.4px;
+///   }
+@mixin font-params($font-size: null, $font-weight: null, $line-height: null, $letter-spacing: 0) {
+  @if $font-size {
+    font-size: $font-size;
+  }
+
+  @if $font-weight {
+    font-weight: $font-weight;
+  }
+
+  @if $line-height {
+    line-height: $line-height;
+  }
+
+  @if unit($letter-spacing) == '' {
+    letter-spacing: $letter-spacing * 1px;
+  } @else {
+    letter-spacing: $letter-spacing;
+  }
+}

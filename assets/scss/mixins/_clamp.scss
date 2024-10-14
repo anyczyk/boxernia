@@ -1,0 +1,7 @@
+@mixin clamp($number) {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: $number;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+}

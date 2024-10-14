@@ -1,0 +1,14 @@
+.bsk-single-content {
+  .bsk-default-border {
+    @include media-breakpoint-down(sm) {
+      border-width: 0 0 1px 0;
+    }
+  }
+  + .bsk-single-content {
+    padding-top: 0 !important;
+  }
+
+  p {
+    text-align: justify;
+  }
+}

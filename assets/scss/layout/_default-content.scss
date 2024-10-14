@@ -1,0 +1,45 @@
+.bsk-default-content {
+  [class*=container--] {
+    position: relative;
+  }
+  & &__social-sharing {
+    @include media-breakpoint-up(lg) {
+      @include position(absolute, 0, null, null, calc(-56px - 1rem));
+      ul {
+        flex-direction: column;
+      }
+    }
+    ul {
+      @extend .list-unstyled;
+
+      display: flex;
+      gap: 1px;
+      margin-bottom: 16px;
+
+      li {
+        @include box(56px);
+
+        display: block;
+        a {
+          @include flex(flex, center, center);
+          @include box(100%);
+          color: $color-white;
+          background-color: rgba($color-brown, 0.8);
+
+          text-decoration: none;
+          transition: background-color $time-transition, color $time-transition;
+
+          &::before {
+            margin-right: 0;
+            font-size: 2rem;
+          }
+
+          &:hover {
+            background-color: $color-sand;
+            color: rgba($color-brown, 0.8);
+          }
+        }
+      }
+    }
+  }
+}

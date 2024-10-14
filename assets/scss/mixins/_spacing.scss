@@ -1,0 +1,55 @@
+@mixin padding-y($value1, $value2: null) {
+    $value1: ensure-unit($value1);
+
+    padding-top: $value1;
+
+    @if $value2 {
+        $value2: ensure-unit($value2);
+
+        padding-bottom: $value2;
+    } @else {
+        padding-bottom: $value1;
+    }
+}
+
+@mixin padding-x($value1, $value2: null) {
+    $value1: ensure-unit($value1);
+
+    padding-left: $value1;
+
+    @if $value2 {
+        $value2: ensure-unit($value2);
+
+        padding-right: $value2;
+    } @else {
+        padding-right: $value1;
+    }
+}
+
+@mixin margin-y($value1, $value2: null) {
+    $value1: ensure-unit($value1);
+
+    margin-top: $value1;
+
+    @if $value2 {
+        $value2: ensure-unit($value2);
+
+        margin-bottom: $value2;
+    } @else {
+        margin-bottom: $value1;
+    }
+}
+
+@mixin margin-x($value1, $value2: null) {
+    $value1: ensure-unit($value1);
+
+    margin-left: $value1;
+
+    @if $value2 {
+        $value2: ensure-unit($value2);
+
+        margin-right: $value2;
+    } @else {
+        margin-right: $value1;
+    }
+}

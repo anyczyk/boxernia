@@ -1,0 +1,6 @@
+@mixin fontello($content, $font-size: 0.8em, $position: relative) {
+  content: $content;
+  font-family: 'fontello', sans-serif;
+  font-size: $font-size;
+  position: $position;
+}

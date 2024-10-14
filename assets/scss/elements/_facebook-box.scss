@@ -1,0 +1,56 @@
+.bsk-main-bar--scroll ~ .bsk-facebook-box:not(.bsk-facebook-box--active) {
+  @include media-breakpoint-down(xl) {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+.bsk-facebook-box {
+  @include position(fixed, 100px, 0);
+
+  transform: translateX(100%);
+  transition: opacity $time-transition, transform $time-transition;
+  background-color: rgba(#ccccbf, 1);
+  z-index: 8;
+  height: 176px;
+  opacity: 0.8;
+
+  @include media-breakpoint-down(xl) {
+    height: auto;
+    top: 61px;
+  }
+
+  &--active {
+    transform: translateX(0);
+    opacity: 1;
+    box-shadow: 0 0 1px rgba($color-darker-brown, 0.4);
+  }
+
+  &__button {
+    @include position(absolute, 0, null, null, -48px);
+    @include box(48px, auto);
+    @include media-breakpoint-down(xl) {
+      width: 24px;
+      left: -24px;
+    }
+
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    display: block;
+  }
+
+  & &__fb-like-box {
+    @include flex(flex, center, center);
+
+    padding: 1rem;
+    height: 100%;
+
+    @include media-breakpoint-down(xl) {
+      padding: 0.4rem;
+    }
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}

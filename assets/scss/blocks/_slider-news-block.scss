@@ -1,0 +1,113 @@
+//.container {
+//  .bsk-slider {
+//    position: relative;
+//    width: 100vw;
+//    transform: translateX(-50%);
+//    left: 50%;
+//  }
+//}
+
+.bsk-slider {
+
+  background-color: rgba($color-sand, 0.2);
+  overflow: hidden;
+
+  &__title {
+    @extend .h2;
+    text-align: center;
+  }
+
+  .swiper {
+    width: 100%;
+    overflow: visible;
+  }
+
+  .swiper-slide {
+    opacity: 0.2;
+    //-webkit-filter: blur(2px); /* dla Safari */
+    //filter: blur(2px); /* dla pozostałych przeglądarek */
+
+    &.swiper-slide-active,
+    &.swiper-slide-next,
+    &.swiper-slide-next + .swiper-slide {
+      opacity: 1;
+      //-webkit-filter: blur(0); /* dla Safari */
+      //filter: blur(0); /* dla pozostałych przeglądarek */
+    }
+
+    @include media-breakpoint-down(lg) {
+      &.swiper-slide-next + .swiper-slide {
+        opacity: 0.2;
+        //-webkit-filter: blur(2px); /* dla Safari */
+        //filter: blur(2px); /* dla pozostałych przeglądarek */
+      }
+    }
+
+    @include media-breakpoint-down(sm) {
+      &.swiper-slide-next {
+        opacity: 0.2;
+        //-webkit-filter: blur(2px); /* dla Safari */
+        //filter: blur(2px); /* dla pozostałych przeglądarek */
+      }
+    }
+  }
+
+  .swiper-pagination {
+    position: static;
+    //margin-top: 32px;
+
+    &-bullet {
+      @include box(16px);
+
+      &-active {
+        background-color: rgba($color-brown, 0.8);
+      }
+
+      &:focus-visible {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  &__wrapper {
+    position: relative;
+  }
+
+  &__swiper-prev,
+  &__swiper-next {
+    @include media-breakpoint-down(xl) {
+      display: none;
+    }
+  }
+
+  &__swiper-prev {
+    left: -80px;
+    transform: translateY(-50%) translateX(-50%);
+  }
+
+  &__swiper-next {
+    right: -80px;
+    transform: translateY(-50%) translateX(50%);
+  }
+
+  &__latest {
+    margin-bottom: 2rem;
+
+    @include media-breakpoint-down(sm) {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .bsk-tile {
+      //height: 100%;
+      width: 100%;
+      @include media-breakpoint-up(lg) {
+        &--latest-news {
+          img {
+            aspect-ratio: 2 / 0.958;
+          }
+        }
+      }
+    }
+  }
+}

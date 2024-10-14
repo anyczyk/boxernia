@@ -1,0 +1,32 @@
+.teams-block {
+  @include media-breakpoint-up(sm) {
+    &__list {
+      li:nth-child(even) {
+        .teams-block__item-image {
+          order: 2;
+        }
+        .teams-block__item-name,
+        .teams-block__item-position {
+          text-align: right;
+        }
+      }
+    }
+  }
+
+  &__item-image {
+    img {
+      @include media-breakpoint-up(sm) {
+        min-width: 200px;
+      }
+      @include media-breakpoint-up(md) {
+        min-width: 300px;
+      }
+
+      max-width: 100%;
+      width: 300px;
+      object-fit: cover;
+      aspect-ratio: 3 / 4;
+      //height: 250px;
+    }
+  }
+}
